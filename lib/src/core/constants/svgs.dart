@@ -1,0 +1,3 @@
+class SvgIcons {
+  SvgIcons._();
+}
