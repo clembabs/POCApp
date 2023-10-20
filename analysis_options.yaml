@@ -1,0 +1,23 @@
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  # errors:
+    # todo: ignore
+
+linter:
+  rules:
+    always_declare_return_types: true
+    unnecessary_this: true
+    avoid_print: true
+    empty_statements: true
+    collection_methods_unrelated_type: true
+    literal_only_boolean_expressions: true
+    await_only_futures: true
+    empty_catches: true
+    file_names: true
+    prefer_expression_function_bodies: true
+    prefer_single_quotes: true
+    omit_local_variable_types: true
+    prefer_final_fields: true
+    non_constant_identifier_names: false
