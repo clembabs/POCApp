@@ -13,4 +13,5 @@ class SvgIcons {
   static const String profileIcon = '${svgPath}profile.svg';
 
   static const String whiteBackground = '${svgPath}white_background.svg';
+  static const String imageIcon = '${svgPath}image_icon.svg';
 }
