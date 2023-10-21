@@ -19,6 +19,13 @@ class AppTextStyles {
     fontSize: 24.sp,
   );
 
+  static TextStyle bodyOnePoppins = GoogleFonts.poppins(
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    color: Colors.black,
+    fontSize: 24.sp,
+  );
+
   static TextStyle button = GoogleFonts.poppins(
     fontWeight: FontWeight.w400,
     fontStyle: FontStyle.normal,
