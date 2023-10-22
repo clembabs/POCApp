@@ -20,7 +20,7 @@ class FoodRepositoryImpl implements FoodRepository {
 
   @override
   Future<FoodNutrition> getFoods({
-    int sessionCount = 40,
+    int sessionCount = 20,
     String nutritionType = 'cooking',
     required String category,
   }) async {

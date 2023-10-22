@@ -7,7 +7,7 @@ import '../../services/key_value_storage/key_value_storage_service.dart';
 
 abstract class FoodRepository {
   Future<FoodNutrition> getFoods({
-    int sessionCount = 40,
+    int sessionCount = 20,
     String nutritionType = 'cooking',
     required String category,
   });
