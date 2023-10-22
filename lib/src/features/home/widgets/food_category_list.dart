@@ -37,19 +37,19 @@ class FoodCategoryList extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: EdgeInsets.only(left: 20.w, bottom: 10.h),
-                child: Text(
-                  'Food Category',
-                  style: AppTextStyles.displayOne
-                      .copyWith(color: AppColors.primaryColor, fontSize: 20.sp),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.only(left: 20.w, bottom: 10.h),
+              //   child: Text(
+              //     'Food Category',
+              //     style: AppTextStyles.displayOne
+              //         .copyWith(color: AppColors.primaryColor, fontSize: 20.sp),
+              //   ),
+              // ),
               Column(
                 children: foodCategories
                     .map(
                       (food) => Padding(
-                        padding: EdgeInsets.only(bottom: 20.h),
+                        padding: EdgeInsets.only(bottom: 15.h),
                         child: GestureDetector(
                           onTap: () =>
                               context.pushNamed(AppRoutes.foodCategory),
@@ -74,15 +74,15 @@ class FoodCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: 120.h,
+        height: 110.h,
         margin: EdgeInsets.symmetric(horizontal: 20.w),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.2),
               spreadRadius: 1,
-              blurRadius: 10,
-              offset: const Offset(0, 2),
+              blurRadius: 5,
+              offset: const Offset(0, 1),
             ),
           ],
         ),
@@ -94,11 +94,14 @@ class FoodCard extends StatelessWidget {
               children: <Widget>[
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
-                  child: Image.network(
-                    foodCategory.imageUrl,
-                    width: 100.h,
-                    height: 100.h,
-                    fit: BoxFit.cover,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.network(
+                      foodCategory.imageUrl,
+                      width: 100.h,
+                      height: 100.h,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Padding(

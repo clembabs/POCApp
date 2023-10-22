@@ -50,18 +50,18 @@ class BottomNavBar extends StatelessWidget {
         ),
         label: '',
       ),
-      BottomNavigationBarItem(
-        icon: _BottomNavIcon(
-          iconPath: SvgIcons.profileIcon,
-          color: AppColors.darkGrey,
-        ),
-        activeIcon: Icon(Icons.person),
-        label: '',
-      ),
+      // BottomNavigationBarItem(
+      //   icon: _BottomNavIcon(
+      //     iconPath: SvgIcons.profileIcon,
+      //     color: AppColors.darkGrey,
+      //   ),
+      //   activeIcon: Icon(Icons.person),
+      //   label: '',
+      // ),
     ];
 
     return SizedBox(
-      height: Platform.isAndroid ? 84.h : 90.h,
+      height: 80.h,
       child: Platform.isIOS
           ? CupertinoTabBar(
               backgroundColor: Colors.white,

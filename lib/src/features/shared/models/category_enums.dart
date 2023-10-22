@@ -1,4 +1,4 @@
-enum FoodCategory {
+enum FoodCategoryEnum {
   genericFoods,
   genericMeals,
   packagedFoods,
@@ -6,13 +6,13 @@ enum FoodCategory {
 
   String get label {
     switch (this) {
-      case FoodCategory.genericFoods:
+      case FoodCategoryEnum.genericFoods:
         return 'generic-foods';
-      case FoodCategory.genericMeals:
+      case FoodCategoryEnum.genericMeals:
         return 'generic-meals';
-      case FoodCategory.packagedFoods:
+      case FoodCategoryEnum.packagedFoods:
         return 'packaged-foods';
-      case FoodCategory.fastFoods:
+      case FoodCategoryEnum.fastFoods:
         return 'fast-foods';
     }
   }
