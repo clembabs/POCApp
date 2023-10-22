@@ -11,6 +11,8 @@ class AppColors {
   static const Color grey = Color(0xffC4C3C6);
   static const Color deepGrey = Color(0xffF2EEEE);
 
+  static const Color errorColor = Color(0xFFCC0808);
+
   static Gradient primaryColorGradient = const LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
