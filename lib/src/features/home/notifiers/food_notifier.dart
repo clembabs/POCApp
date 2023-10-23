@@ -9,14 +9,14 @@ class FoodNotifier extends StateNotifier<FoodState> {
   FoodNotifier({
     required this.foodRepository,
   }) : super(FoodState.initial()) {
-    getAllFoods();
+    // getAllFoods();
   }
 
   final FoodRepository foodRepository;
 
   Future<void> getAllFoods({
     int sessionCount = 40,
-    String? category,
+    required String category,
   }) async {
     try {
       if (state.foodNutrition?.hints == [] || sessionCount == 40) {
@@ -29,7 +29,7 @@ class FoodNotifier extends StateNotifier<FoodState> {
 
       final foodNutrition = await foodRepository.getFoods(
         sessionCount: sessionCount,
-        category: category!,
+        category: category,
       );
 
       if (sessionCount == 40) {

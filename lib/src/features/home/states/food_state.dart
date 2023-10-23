@@ -22,7 +22,7 @@ class FoodState {
   factory FoodState.initial() => FoodState._(
         viewState: ViewState.idle,
         message: null,
-        foodNutrition: FoodNutrition(),
+        foodNutrition: FoodNutrition(hints: []),
       );
 
   FoodState.error({
@@ -30,7 +30,7 @@ class FoodState {
   }) : this._(
           viewState: ViewState.idle,
           failure: failure,
-          foodNutrition: FoodNutrition(),
+          foodNutrition: FoodNutrition(hints: []),
         );
 
   FoodState copyWith({
