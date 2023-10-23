@@ -4,6 +4,7 @@ import 'package:poc_app/src/features/cart/views/cart_view.dart';
 import 'package:poc_app/src/features/home/views/home_view.dart';
 import 'package:poc_app/src/features/root/widgets/bottom_nav_bar.dart';
 import 'package:poc_app/src/features/shared/notifiers/internet_connectivity_notifier.dart';
+import 'package:poc_app/src/features/shared/widgets/no_internet_view.dart';
 import 'package:poc_app/src/features/wishlist/views/wishlist_view.dart';
 
 final rootPageProvider = StateProvider.autoDispose((ref) => 0);
@@ -29,15 +30,14 @@ class RootView extends ConsumerWidget {
                       // const HomeView(),
                     ]
                   : [
-                      const SizedBox.shrink(),
-                      const SizedBox.shrink(),
-                      const SizedBox.shrink(),
-                      // const SizedBox.shrink(),
+                      const NoInternetView(),
+                      const NoInternetView(),
+                      const NoInternetView(),
                     ],
               error: (string, _) => [
-                    const SizedBox.shrink(),
-                    const SizedBox.shrink(),
-                    const SizedBox.shrink(),
+                    const NoInternetView(),
+                    const NoInternetView(),
+                    const NoInternetView(),
                     // const SizedBox.shrink(),
                   ],
               loading: () => [

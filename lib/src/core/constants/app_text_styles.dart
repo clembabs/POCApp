@@ -68,4 +68,11 @@ class AppTextStyles {
     fontStyle: FontStyle.normal,
     fontSize: 14.sp,
   );
+
+  static TextStyle bodySmall = GoogleFonts.lato(
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    color: AppColors.black,
+    fontSize: 16.sp,
+  );
 }

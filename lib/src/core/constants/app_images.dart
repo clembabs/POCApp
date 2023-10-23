@@ -8,4 +8,5 @@ class AppImages {
   static const String whiteBackground = '${pngPath}white_background.png';
 
   static const String contentBlock = '${pngPath}content_block.png';
+  static const String noInternet = '${pngPath}no_internet.jpg';
 }
