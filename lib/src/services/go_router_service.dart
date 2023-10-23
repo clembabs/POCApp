@@ -8,6 +8,7 @@ import 'package:poc_app/src/features/home/views/food_details_view.dart';
 import 'package:poc_app/src/features/home/views/food_list_view.dart';
 import 'package:poc_app/src/features/root/views/root_view.dart';
 import 'package:poc_app/src/features/root/views/splash_screen.dart';
+import 'package:poc_app/src/services/go_router_page_builder.dart';
 
 final goRouterProvider = Provider((ref) => GoRouter(
       debugLogDiagnostics: true,
@@ -42,6 +43,17 @@ final goRouterProvider = Provider((ref) => GoRouter(
                               (state.extra as Map?)?['category'] as String,
                           key: state.pageKey,
                         ),
+                    pageBuilder: (context, state) =>
+                        RouterTransitionFactory.getTransitionPage(
+                          context: context,
+                          state: state,
+                          child: FoodListView(
+                            category:
+                                (state.extra as Map?)?['category'] as String,
+                            key: state.pageKey,
+                          ),
+                          type: 'fade', // fade|rotation|scale|size
+                        ),
                     routes: [
                       GoRoute(
                         path: AppRoutes.foodDetails,
@@ -49,6 +61,16 @@ final goRouterProvider = Provider((ref) => GoRouter(
                         builder: (context, state) => FoodDetailsView(
                           food: (state.extra as Map?)?['food'] as Food,
                           key: state.pageKey,
+                        ),
+                        pageBuilder: (context, state) =>
+                            RouterTransitionFactory.getTransitionPage(
+                          context: context,
+                          state: state,
+                          child: FoodDetailsView(
+                            food: (state.extra as Map?)?['food'] as Food,
+                            key: state.pageKey,
+                          ),
+                          type: 'fade', // fade|rotation|scale|size
                         ),
                       ),
                     ]),
