@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:poc_app/src/core/constants/app_colors.dart';
@@ -21,16 +22,16 @@ class CustomImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => imageUrl.isNotEmpty
-      ? FadeInImage.assetNetwork(
-          image: imageUrl,
+      ? CachedNetworkImage(
+          imageUrl: imageUrl,
           width: width,
           height: height,
-          // fit: fit ?? BoxFit.cover,
-          placeholder: placeholder ?? AppImages.contentBlock,
-          placeholderFit: BoxFit.cover,
-          imageErrorBuilder: (BuildContext context, Object exception,
-                  StackTrace? stackTrace) =>
-              SizedBox(
+          fit: BoxFit.cover,
+          placeholder: (context, url) => ClipRRect(
+            borderRadius: BorderRadius.circular(4),
+            child: Image.asset(AppImages.contentBlock),
+          ),
+          errorWidget: (context, url, error) => SizedBox(
             height: height,
             width: width,
             child: Container(
