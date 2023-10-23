@@ -27,8 +27,7 @@ class FoodRepositoryImpl implements FoodRepository {
     try {
       final client = apiService.client;
       final session = 'session=$sessionCount';
-      const apiKeys =
-          'app_id=${EnvConfig.edamamFoodAppId}&app_key=${EnvConfig.edamamFoodAppKey}';
+      const apiKeys = 'app_id=$edamamFoodAppId&app_key=$edamamFoodAppKey';
       final nutrition = 'nutrition-type=$nutritionType&category=$category';
 
       final response = await client

@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:poc_app/src/core/utilities/view_state.dart';
-import 'package:poc_app/src/features/Cart/states/Cart_state.dart';
 import 'package:poc_app/src/features/cart/models/cart.dart';
+import 'package:poc_app/src/features/cart/states/cart_state.dart';
 import 'package:poc_app/src/repositories/cart/cart_repository.dart';
 
 class CartNotifier extends StateNotifier<CartState> {
@@ -36,6 +36,7 @@ class CartNotifier extends StateNotifier<CartState> {
         message: cartResp,
         viewState: ViewState.idle,
       );
+      getCart();
     } on String catch (failure) {
       state = state.copyWith(failure: failure);
     }
@@ -53,6 +54,7 @@ class CartNotifier extends StateNotifier<CartState> {
         message: cartResp,
         viewState: ViewState.idle,
       );
+      getCart();
     } on String catch (failure) {
       state = state.copyWith(failure: failure);
     }

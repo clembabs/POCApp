@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:poc_app/src/core/constants/storage_keys.dart';
 import 'package:poc_app/src/features/cart/models/cart.dart';
 import 'package:poc_app/src/features/shared/models/custom_error_response.dart';
@@ -13,8 +14,11 @@ class CartRepositoryImpl implements CartRepository {
   @override
   Future<List<Cart>> getCart() async {
     try {
-      var dataList = storageService.readList(key: StorageKeys.cartMap);
-      final carts = dataList != null
+      final storage = GetStorage();
+
+      final dataList =
+          storage.read(StorageKeys.cartMap) ?? <Map<String, dynamic>>[];
+      final carts = dataList.isNotEmpty
           ? List<Cart>.from(
               dataList.map((json) {
                 final cart = Cart.fromMap(json);
@@ -31,15 +35,17 @@ class CartRepositoryImpl implements CartRepository {
   @override
   Future<String> deleteFromCart({required Cart cart}) async {
     try {
-      final dataList = storageService.readList(key: StorageKeys.cartMap) ??
-          <Map<String, dynamic>>[];
+      final storage = GetStorage();
+
+      final dataList =
+          storage.read(StorageKeys.cartMap) ?? <Map<String, dynamic>>[];
       dataList.removeWhere((item) => item['id'] == cart.id);
       await storageService.saveList(
         key: StorageKeys.cartMap,
-        value: dataList,
+        value: dataList.cast<Map<String, dynamic>>(),
       );
 
-      return 'Deleted';
+      return 'Item deleted from cart';
     } on PlatformException {
       throw CustomErrorResponse(errors: [ErrorResponse(error: 'Error')]);
     }
@@ -48,16 +54,21 @@ class CartRepositoryImpl implements CartRepository {
   @override
   Future<String> addToCart({required Cart cart}) async {
     try {
-      final dataList = storageService.readList(key: StorageKeys.cartMap) ??
-          <Map<String, dynamic>>[];
+      final storage = GetStorage();
 
-      dataList.add(cart.toMap());
-      await storageService.saveList(
-        key: StorageKeys.cartMap,
-        value: dataList,
-      );
+      final dataList =
+          storage.read(StorageKeys.cartMap) ?? <Map<String, dynamic>>[];
 
-      return 'Successful';
+      if (dataList.any((map) => map['id'] == cart.id) == false) {
+        dataList.add(cart.toMap());
+        await storageService.saveList(
+          key: StorageKeys.cartMap,
+          value: dataList.cast<Map<String, dynamic>>(),
+        );
+        return 'Item added to Cart';
+      } else {
+        return 'Item already exist in cart';
+      }
     } on PlatformException {
       throw CustomErrorResponse(errors: [ErrorResponse(error: 'Error')]);
     }

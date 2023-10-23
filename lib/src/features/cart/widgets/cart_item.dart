@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 import 'package:poc_app/src/core/constants/app_colors.dart';
 import 'package:poc_app/src/core/constants/app_text_styles.dart';
 import 'package:poc_app/src/core/constants/svgs.dart';
@@ -29,116 +28,128 @@ class _CartItemState extends ConsumerState<CartItem>
   bool get wantKeepAlive => true;
 
   @override
-  Widget build(BuildContext context) {
-    final value = NumberFormat('#,##0', 'en_US');
-
-    return GestureDetector(
-      onTap: () {},
-      child: Card(
-        elevation: 0,
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: () {},
         child: Container(
-          padding:
-              EdgeInsets.only(top: 10.h, left: 10.w, bottom: 0.h, right: 10.w),
+          padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  color: Color(0xFFE5E5E5),
-                ),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(6.r),
-                    child: CustomImageWidget(
-                      height: 72.h,
-                      width: 72.w,
-                      imageUrl: widget.cartProduct.image,
-                      fit: BoxFit.fill,
-                    )),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: const Offset(0, 1),
               ),
-              SizedBox(width: 15.w),
-              Expanded(
-                flex: 4,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${widget.cartProduct.name} ',
-                      style: AppTextStyles.mainCaption,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                'Quantity :',
-                                style: AppTextStyles.mainCaption,
-                              ),
-                              Flexible(
-                                child: CartWidgetButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      if (_quantityCounter > 1) {
-                                        _quantityCounter--;
-                                      }
-                                    });
-                                  },
-                                  child: Icon(
-                                    Icons.remove,
-                                    color: _quantityCounter == 1
-                                        ? AppColors.grey
-                                        : AppColors.black.withOpacity(0.5),
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                '$_quantityCounter',
-                                style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                              Flexible(
-                                child: CartWidgetButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _quantityCounter++;
-                                    });
-                                  },
-                                  child: Icon(
-                                    Icons.add,
-                                    color: AppColors.black.withOpacity(0.5),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        // ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: GestureDetector(
-                              onTap: widget.deleteOnTap,
-                              child: PlatformSvg.asset(SvgIcons.deleteIcon,
-                                  width: 20.w,
-                                  height: 20.h,
-                                  color: AppColors.grey)),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              )
             ],
           ),
+          child: Container(
+            padding: EdgeInsets.only(
+                top: 10.h, left: 10.w, bottom: 0.h, right: 10.w),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: const BoxDecoration(
+                    color: Color(0xFFE5E5E5),
+                  ),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(6.r),
+                      child: CustomImageWidget(
+                        height: 72.h,
+                        width: 72.w,
+                        imageUrl: widget.cartProduct.image,
+                        fit: BoxFit.fill,
+                      )),
+                ),
+                SizedBox(width: 15.w),
+                Expanded(
+                  flex: 4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${widget.cartProduct.name} ',
+                        style: AppTextStyles.mainCaption,
+                      ),
+                      SizedBox(height: 5.h),
+                      Text(
+                        r'$' '${widget.cartProduct.price} ',
+                        style: AppTextStyles.mainCaption,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Flexible(
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  'Quantity :',
+                                  style: AppTextStyles.mainCaption,
+                                ),
+                                Flexible(
+                                  child: CartWidgetButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        if (_quantityCounter > 1) {
+                                          _quantityCounter--;
+                                        }
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.remove,
+                                      color: _quantityCounter == 1
+                                          ? AppColors.grey
+                                          : AppColors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  '$_quantityCounter',
+                                  style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                                Flexible(
+                                  child: CartWidgetButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _quantityCounter++;
+                                      });
+                                    },
+                                    child: Icon(
+                                      Icons.add,
+                                      color: AppColors.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          // ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: GestureDetector(
+                                onTap: widget.deleteOnTap,
+                                child: PlatformSvg.asset(SvgIcons.deleteIcon,
+                                    width: 20.w,
+                                    height: 20.h,
+                                    color: AppColors.grey)),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
-      ),
-    );
-  }
+      );
 }
