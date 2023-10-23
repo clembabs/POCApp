@@ -38,6 +38,7 @@ class WishlistNotifier extends StateNotifier<WishlistState> {
         message: wishlistResp,
         viewState: ViewState.idle,
       );
+      getWishlist();
     } on String catch (failure) {
       state = state.copyWith(failure: failure);
     }
@@ -56,6 +57,7 @@ class WishlistNotifier extends StateNotifier<WishlistState> {
         message: wishlistResp,
         viewState: ViewState.idle,
       );
+      getWishlist();
     } on String catch (failure) {
       state = state.copyWith(failure: failure);
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:poc_app/src/core/constants/storage_keys.dart';
 import 'package:poc_app/src/features/shared/models/custom_error_response.dart';
 import 'package:poc_app/src/features/wishlist/models/wishlist.dart';
@@ -13,7 +14,11 @@ class WishlistRepositoryImpl implements WishlistRepository {
   @override
   Future<List<Wishlist>> getWishlist() async {
     try {
-      var dataList = storageService.readList(key: StorageKeys.wishlistMap);
+      final storage = GetStorage();
+
+      var dataList =
+          storage.read(StorageKeys.wishlistMap) ?? <Map<String, dynamic>>[];
+
       final wishlists = dataList != null
           ? List<Wishlist>.from(
               dataList.map((json) {
@@ -31,15 +36,17 @@ class WishlistRepositoryImpl implements WishlistRepository {
   @override
   Future<String> deleteFromWishlist({required Wishlist wishlist}) async {
     try {
-      final dataList = storageService.readList(key: StorageKeys.wishlistMap) ??
-          <Map<String, dynamic>>[];
+      final storage = GetStorage();
+
+      var dataList =
+          storage.read(StorageKeys.wishlistMap) ?? <Map<String, dynamic>>[];
       dataList.removeWhere((item) => item['id'] == wishlist.id);
-      await storageService.saveList(
-        key: StorageKeys.wishlistMap,
-        value: dataList,
+      await storage.write(
+        StorageKeys.wishlistMap,
+        dataList,
       );
 
-      return 'Deleted';
+      return 'Item deleted from favourite';
     } on PlatformException {
       throw CustomErrorResponse(errors: [ErrorResponse(error: 'Error')]);
     }
@@ -48,16 +55,17 @@ class WishlistRepositoryImpl implements WishlistRepository {
   @override
   Future<String> addToWishlist({required Wishlist wishlist}) async {
     try {
-      final dataList = storageService.readList(key: StorageKeys.wishlistMap) ??
-          <Map<String, dynamic>>[];
+      final storage = GetStorage();
 
+      var dataList =
+          storage.read(StorageKeys.wishlistMap) ?? <Map<String, dynamic>>[];
       dataList.add(wishlist.toMap());
-      await storageService.saveList(
-        key: StorageKeys.wishlistMap,
-        value: dataList,
+      await storage.write(
+        StorageKeys.wishlistMap,
+        dataList,
       );
 
-      return 'Successful';
+      return 'Item added to favourite';
     } on PlatformException {
       throw CustomErrorResponse(errors: [ErrorResponse(error: 'Error')]);
     }

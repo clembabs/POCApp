@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 class Wishlist {
-  final int id;
+  final String id;
   final String image;
   final String name;
   final String price;
   final String description;
+  final String brand;
 
   Wishlist({
     required this.id,
@@ -13,6 +14,7 @@ class Wishlist {
     required this.name,
     required this.price,
     required this.description,
+    required this.brand,
   });
 
   Map<String, dynamic> toMap() {
@@ -23,16 +25,18 @@ class Wishlist {
     result.addAll({'name': name});
     result.addAll({'price': price});
     result.addAll({'description': description});
+    result.addAll({'brand': brand});
 
     return result;
   }
 
   factory Wishlist.fromMap(Map<String, dynamic> map) => Wishlist(
-        id: map['id']?.toInt() ?? 0,
+        id: map['id'] ?? '',
         image: map['image'] ?? '',
         name: map['name'] ?? '',
         price: map['price'] ?? '',
         description: map['description'] ?? '',
+        brand: map['brand'] ?? '',
       );
 
   String toJson() => json.encode(toMap());
