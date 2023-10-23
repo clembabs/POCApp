@@ -16,4 +16,17 @@ enum FoodCategoryEnum {
         return 'fast-foods';
     }
   }
+
+  String get title {
+    switch (this) {
+      case FoodCategoryEnum.genericFoods:
+        return 'Generic Foods';
+      case FoodCategoryEnum.genericMeals:
+        return 'Generic Meals';
+      case FoodCategoryEnum.packagedFoods:
+        return 'Packaged Foods';
+      case FoodCategoryEnum.fastFoods:
+        return 'Fast Foods';
+    }
+  }
 }

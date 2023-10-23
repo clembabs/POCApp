@@ -8,7 +8,7 @@
             "program": "lib/main.dart",
             "args": [
                 "--dart-define-from-file",
-                "api-keys.dev.json"
+                "api_keys.dev.json"
             ]
         },
         {
@@ -18,7 +18,7 @@
             "program": "lib/main.dart",
             "args": [
                 "--dart-define-from-file",
-                "api-keys.prod.json"
+                "api_keys.prod.json"
             ]
         }
     ]

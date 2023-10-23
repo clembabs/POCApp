@@ -6,6 +6,8 @@ enum ENV {
 }
 
 const ENV appEnv = kReleaseMode ? ENV.production : ENV.staging;
+const edamamFoodAppId = String.fromEnvironment('food_app_id');
+const edamamFoodAppKey = String.fromEnvironment('food_app_key');
 
 class EnvConfig {
   EnvConfig._();
@@ -13,8 +15,6 @@ class EnvConfig {
 
   static const productionUrl = String.fromEnvironment('base_url');
   static const stagingUrl = String.fromEnvironment('base_url');
-  static const edamamFoodAppId = String.fromEnvironment('food_app_id');
-  static const edamamFoodAppKey = String.fromEnvironment('food_app_key');
 
   static String getBaseUrl(ENV deployEnv) {
     switch (deployEnv) {

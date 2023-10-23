@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poc_app/src/core/constants/app_routes.dart';
+import 'package:poc_app/src/features/home/models/food.dart';
 import 'package:poc_app/src/features/home/views/food_category_list_view.dart';
 import 'package:poc_app/src/features/home/views/food_details_view.dart';
+import 'package:poc_app/src/features/home/views/food_list_view.dart';
 import 'package:poc_app/src/features/root/views/root_view.dart';
 import 'package:poc_app/src/features/root/views/splash_screen.dart';
 
@@ -18,20 +20,6 @@ final goRouterProvider = Provider((ref) => GoRouter(
             key: state.pageKey,
           ),
         ),
-        // GoRoute(
-        //   path: AppRoutes.signUp,
-        //   name: AppRoutes.signUp,
-        //   builder: (context, state) => RegisterView(
-        //     key: state.pageKey,
-        //   ),
-        // ),
-        // GoRoute(
-        //   path: AppRoutes.signIn,
-        //   name: AppRoutes.signIn,
-        //   builder: (context, state) => LoginView(
-        //     key: state.pageKey,
-        //   ),
-        // ),
         GoRoute(
           path: AppRoutes.root,
           name: AppRoutes.root,
@@ -45,13 +33,26 @@ final goRouterProvider = Provider((ref) => GoRouter(
               builder: (context, state) => FoodCategoryListView(
                 key: state.pageKey,
               ),
-            ),
-            GoRoute(
-              path: AppRoutes.foodDetails,
-              name: AppRoutes.foodDetails,
-              builder: (context, state) => FoodDetailsView(
-                key: state.pageKey,
-              ),
+              routes: [
+                GoRoute(
+                    path: AppRoutes.foodList,
+                    name: AppRoutes.foodList,
+                    builder: (context, state) => FoodListView(
+                          category:
+                              (state.extra as Map?)?['category'] as String,
+                          key: state.pageKey,
+                        ),
+                    routes: [
+                      GoRoute(
+                        path: AppRoutes.foodDetails,
+                        name: AppRoutes.foodDetails,
+                        builder: (context, state) => FoodDetailsView(
+                          food: (state.extra as Map?)?['food'] as Food,
+                          key: state.pageKey,
+                        ),
+                      ),
+                    ]),
+              ],
             ),
           ],
         ),

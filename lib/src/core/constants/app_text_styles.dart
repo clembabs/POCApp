@@ -62,4 +62,10 @@ class AppTextStyles {
     color: AppColors.black,
     fontSize: 14.sp,
   );
+
+  static TextStyle buttonTextSemiBold = GoogleFonts.lato(
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+    fontSize: 14.sp,
+  );
 }
