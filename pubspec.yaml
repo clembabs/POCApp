@@ -15,19 +15,54 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+  #Dio is a popular HTTP client for making network requests in Flutter. 
+  #It's used for making HTTP requests, handling responses, and working with REST APIs.
   dio: ^5.1.1
+
+  #This package is an interceptor for Dio that provides logging capabilities, making it easier to debug network requests and responses.
   pretty_dio_logger: ^1.3.1
+
+  #GetStorage is a simple key-value storage solution for Flutter. It's often used for lightweight local storage of data, settings, or caching
   get_storage: ^2.1.1
+
+  # Riverpod is a state management library for Flutter. It allows you to manage application state, handle dependency injection, and build reactive applications.
   flutter_riverpod: ^2.3.6
+
+  #GoRouter is a powerful and flexible routing package for Flutter. 
+  #It's used for handling app navigation and routing, providing more control and customization over routing in your app.
   go_router: ^10.1.0
+
+  # Flutter Spinkit is a package that provides a collection of animated loading indicators (spinners) for use in your Flutter app.
   flutter_spinkit: ^5.1.0
+
+  #Google Fonts is a package that simplifies the process of using Google Fonts in your Flutter app. 
+  #You can easily include and style text with custom fonts
   google_fonts: ^4.0.3
+
+  #Flutter SVG allows you to render Scalable Vector Graphics (SVG) in your Flutter application, which is especially useful for creating vector-based images and icons.
   flutter_svg: ^2.0.5
+
+  # Flutter Screen Util is a package for handling different screen sizes and resolutions. 
+  #It helps with making your app responsive to different devices
   flutter_screenutil: ^5.7.0
+
+  #Hooks Riverpod is an extension for Riverpod that adds support for using hooks, similar to React hooks, in your Flutter app. 
+  #It simplifies state management and widget creation.
   hooks_riverpod: ^2.3.6
+
+  #Loader Overlay is a package for displaying loading indicators or overlays on top of your app's content. 
+  #It's often used to show loading spinners during asynchronous operations.
   loader_overlay: ^2.2.0
+
+  #Cached Network Image is a package for loading and caching images from the network efficiently. 
+  #It helps improve performance by storing images in a cache.
   cached_network_image: ^3.2.3
+
+  #Shimmer is used to create shimmering loading effects. It's commonly used as a placeholder while content is being loaded
   shimmer: ^3.0.0
+
+  #Connectivity Plus is a package for checking the network connectivity status of the device. 
+  #It's used to monitor network changes and handle network-dependent functionality in your app.
   connectivity_plus: ^2.1.0
   
   
@@ -36,10 +71,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: ^2.3.3
+
+  #The flutter_lints package is used for code analysis and linting in Flutter applications. 
+  #Linting is the process of statically analyzing your code to identify potential issues, style violations, or best practice violations.
   flutter_lints: ^2.0.0
  
-  freezed: ^2.3.2
 
 flutter:
   uses-material-design: true
