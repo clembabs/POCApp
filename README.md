@@ -14,6 +14,7 @@ PocApp delivery application was built with Flutter Crossplatform (Android and iO
 - API Calls with CRUD functionalities
 - Navigation with Animation
 - Local Storage (Favourite and Cart Functionalities)
+- Internet Connectivity
 
 ## Environment Variables
 
