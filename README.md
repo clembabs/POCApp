@@ -29,6 +29,20 @@ Create `api_key.dev.json` and `api_key.prod.json` file in the project root direc
 Visit [Edamam API Doc](https://www.edamam.com) signup and create API keys
 
 
+## Run Locally
+
+### Enter command
+
+```bash
+   flutter run --dart-define-from-file=api_keys.dev.json
+```
+or (for prod)
+
+```bash
+   flutter run --dart-define-from-file=api_keys.prod.json
+```
+
+
 ## Screenshots
 
 <h4>Start Up Page</h4>
